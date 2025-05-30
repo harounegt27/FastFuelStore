@@ -1,0 +1,24 @@
+.etat-normal-tm {
+  color: #55ffaa; /* Vert */
+}
+
+.etat-averti-tm {
+  color: #ffa929; /* Oranger */
+}
+
+.etat-rupture-tm {
+  color: #ff4747; /* Rouge */
+}
+
+/* Styles pour les différentes valeurs de stock.etatM3 */
+.etat-normal-m3 {
+  color: #55ffaa; /* Vert */
+}
+
+.etat-averti-m3 {
+  color: #ffa929; /* Oranger */
+}
+
+.etat-rupture-m3 {
+  color: #ff4747; /* Rouge */
+}

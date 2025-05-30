@@ -1,0 +1,33 @@
+
+
+<div class="auto-table overflow-x-auto shadow-md sm:rounded-lg">
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400" >
+      <thead class="text-xs text-white uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+              <th scope="col" class="px-6 py-3">
+                  Nom Catégorie
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Déscription
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Action
+              </th>
+          </tr>
+      </thead>
+      <tbody *ngFor="let categorie of categories">
+          <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  {{categorie.name}}
+              </th>
+              <td class="px-6 py-3">
+                  {{categorie.description}}
+              </td>
+              <td class="px-6 py-3+">
+                  <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline cursor-pointer" [routerLink]="['/admin/maj-categorie', categorie.id]">Modifier</a>
+                  <a class="font-medium text-red-600 dark:text-red-500 hover:underline ml-6 cursor-pointer" (click)="deleteCategorie(categorie.id)">Supprimer</a>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>

@@ -1,0 +1,29 @@
+<div class="produit-commander-container">
+  <div class="produit-commander" *ngFor="let produit of produitCommandeList">
+    <div class="produit-info">
+      <div class="produit-image">
+        <img [src]="produit.processedImg" alt="img-produit" />
+      </div>
+      <div class="produit-details">
+        <div class="item-row">
+            <div class="produit-nom">
+              {{produit.name}}
+            </div>
+            <div class="produit-prix">
+              Prix unitaire :{{produit.prixUnitaire}}
+            </div>
+            <div class="produit-qte">
+              Quantité : {{produit.qte}}
+            </div>
+        </div>
+      </div>
+      <div class="action-button">
+        <button type="submit" class="w-32 bg-gradient-to-r from-cyan-400 to-cyan-600 text-white py-2 rounded-lg mx-auto block focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 mb-2" routerLink="/client/review/{{produit.id}}">Donner avis</button>
+      </div>
+    </div>
+
+  </div>
+  <div class="montant-totale">
+      Mantant totale: {{montant | currency}}
+    </div>
+</div>

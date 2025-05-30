@@ -1,0 +1,84 @@
+<div class="min-v-screen flex items-center justify-center">
+  <div class="max-w-md w-full p-6 bg-white rounded-lg shadow-lg bg-cyan-100 border-cyan-800 border-2">
+
+    <div class="flex justify-center mb-8 ">
+      <a routerLink="/" class="text-2xl font-serif font-bold tracking-wide overline text-blue-800">F F S</a>
+    </div>
+
+    <h1 class="text-2xl font-semibold text-center text-cyan-500 mt-8 mb-6 ">Ajouter Stock</h1>
+
+    <form [formGroup]="stockForm" >
+
+      <!-- Produit -->
+     <div class="mb-4">
+      <label class="block mb-2 text-sm text-gray-600">Sélectionner un Produit</label>
+      <select formControlName="produitId" name="produitId"class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
+        <option *ngFor="let produit of listOfProduit" [value]="produit.id">
+          {{produit.name}}
+        </option>
+      </select>
+
+      <mat-error *ngIf="stockForm.get('produitId')?.invalid && stockForm.get('produitId')?.touched">
+        Sélectionner un produit pour votre prix unitaire.
+      </mat-error>
+      </div>
+
+      <div class="mb-4">
+        <label class="block mb-2 text-sm text-gray-600">Densité</label>
+        <input matInput type="number" formControlName="conversionFactor" placeholder="Facteur de conversion" class="w-full px-4 py-2 border text-cyan-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" required>
+      </div>
+
+      <!-- Tonnes Métriques -->
+      <div class="mb-4">
+        <label class="block mb-2 text-sm text-gray-600">Tonnes Métriques</label>
+        <input matInput type="number" formControlName="en_tm" placeholder="Tonnes Métriques" class="w-full px-4 py-2 border text-cyan-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" required (input)="onCubicMeterChange($event)">
+
+        <mat-error *ngIf="stockForm.get('en_tm')?.invalid && stockForm.get('en_tm')?.touched">
+          Saisie la quantité en tonnes métriques pour votre produit.
+        </mat-error>
+      </div>
+
+      <!-- Mètres Cubes -->
+      <div class="mb-4">
+        <label class="block mb-2 text-sm text-gray-600">Mètres Cubes</label>
+        <input matInput type="number" formControlName="en_m3" placeholder="Mètres Cubes" class="w-full px-4 py-2 border text-cyan-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" required (input)="onMetricTonChange($event)">
+
+        <mat-error *ngIf="stockForm.get('en_m3')?.invalid && stockForm.get('en_m3')?.touched">
+          Saisie la quantité en mètres cubes pour votre produit.
+        </mat-error>
+      </div>
+
+      <!-- Idicateur d'etat Tonnes Métriques -->
+      <div class="mb-4">
+        <label class="block mb-2 text-sm text-gray-600">Alert d'état de stock en Tonnes Métriques</label>
+        <input matInput type="number" formControlName="indique_en_tm" placeholder="Indicateur Tonnes Métriques" class="w-full px-4 py-2 border text-cyan-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" required>
+
+        <mat-error *ngIf="stockForm.get('indique_en_tm')?.invalid && stockForm.get('indique_en_tm')?.touched">
+          Saisie l'indicateur de stock en tonnes métriques pour votre produit.
+        </mat-error>
+      </div>
+
+
+
+      <!-- Indicateur d'etat Mètres Cubes -->
+      <div class="mb-4">
+        <label class="block mb-2 text-sm text-gray-600">Alert d'état de stock en Mètres Cubes</label>
+        <input matInput type="number" formControlName="indique_en_m3" placeholder="Indicateur Mètres Cubes" class="w-full px-4 py-2 border text-cyan-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" required>
+
+        <mat-error *ngIf="stockForm.get('indique_en_m3')?.invalid && stockForm.get('indique_en_m3')?.touched">
+          Saisie l'indicateur de stock en mètres cubes pour votre produit.
+        </mat-error>
+      </div>
+
+
+
+
+
+    <!-- Confirmation -->
+      <button type="submit" class="w-32 bg-gradient-to-r from-cyan-400 to-cyan-600 text-white py-2 rounded-lg mx-auto block focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 mb-2" (click)="addStock()">Ajouter</button>
+
+
+  </form>
+
+  </div>
+</div>

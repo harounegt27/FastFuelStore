@@ -1,0 +1,54 @@
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 15px;
+  outline: none;
+  color: none;
+  background-color: inherit;
+  margin: 0;
+  border-radius: 50px;
+  /* Important for vertical align on mobile phones */
+}
+
+a:hover, .dropdown:hover{
+  color: #f9f9f9;
+
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.dropdown-content a {
+  float: none;
+  color: #1d427e;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #3bddf6;
+  border-radius: 10px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+
+}
+
+.nomClient{
+  padding-top: 5px;
+  padding-left: 30px;
+  font-size: larger;
+}

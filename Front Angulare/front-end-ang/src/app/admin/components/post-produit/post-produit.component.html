@@ -1,0 +1,77 @@
+<div class="min-v-screen flex items-center justify-center">
+  <div class="max-w-md w-full p-6 bg-white rounded-lg shadow-lg bg-cyan-100 border-cyan-800 border-2">
+
+    <div class="flex justify-center mb-8 ">
+      <a routerLink="/" class="text-2xl font-serif font-bold tracking-wide overline text-blue-800">F F S</a>
+    </div>
+
+    <h1 class="text-2xl font-semibold text-center text-cyan-500 mt-8 mb-6 ">Ajouter Produit</h1>
+
+    <form [formGroup]="produitForm" >
+      <!-- Nom -->
+      <div class="mb-4">
+        <label class="block mb-2 text-sm text-gray-600">Nom</label>
+        <input matInput formControlName="name" placeholder="Nom du produit" class="w-full px-4 py-2 border text-cyan-800 text-lg font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" required>
+
+        <mat-error *ngIf="produitForm.get('name')?.invalid && produitForm.get('name')?.touched">
+          Saisie un nom pour votre produit.
+        </mat-error>
+      </div>
+      <!-- Description -->
+      <div class="mb-4">
+        <label class="block mb-2 text-sm text-gray-600">Déscription</label>
+        <textarea matInput formControlName="description" placeholder="Déscription" class="w-full px-4 py-2 border text-cyan-800 text-base rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" required></textarea>
+
+        <mat-error *ngIf="produitForm.get('description')?.invalid && produitForm.get('description')?.touched">
+          Saisie un nom pour votre produit.
+        </mat-error>
+      </div>
+
+     <!-- Catégorie -->
+      <div class="mb-4">
+        <label class="block mb-2 text-sm text-gray-600">Sélectionner une catégorie</label>
+        <select formControlName="categorieId" name="categorieId" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
+          <option *ngFor="let categorie of listOfCategorie" [value]="categorie.id">
+            {{categorie.name}}
+          </option>
+        </select>
+        <mat-error *ngIf="produitForm.get('categorieId')?.invalid && produitForm.get('categorieId')?.touched">
+          Saisie une catégorie pour votre produit.
+        </mat-error>
+      </div>
+      <!-- Densite -->
+      <div class="mb-4">
+        <label class="block mb-2 text-sm text-gray-600">Densité </label>
+        <input matInput type="number" formControlName="densite" placeholder="Par exemple, 1 TM = 0.8 m3" class="w-full px-4 py-2 border text-cyan-800 text-baserounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" required>
+
+        <mat-error *ngIf="produitForm.get('densite')?.invalid && produitForm.get('densite')?.touched">
+          Saisie un nom pour votre produit.
+        </mat-error>
+      </div>
+
+
+      <!-- Image -->
+      <div class="file-upload-container">
+        <label class="relative">
+          <span class="block mb-2 text-sm text-gray-600">Sélectionner une photo pour le produit</span>
+          <input type="file" id="fileInput" (change)="onFileSelected($event)"  hidden>
+          <mat-icon class="relative mb-2 text-sm text-gray-600">attach_file</mat-icon>
+        </label>
+        <div *ngIf="selectedFile" class="image-preview">
+          <div class="circle-image">
+              <img [src]="imagePreview" alt="Selected Image" class="preview-image">
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <!-- Confirmation -->
+      <button type="submit" class="w-32 bg-gradient-to-r from-cyan-400 to-cyan-600 text-white py-2 rounded-lg mx-auto block focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 mb-2" (click)="addProduit()">Ajouter</button>
+
+
+    </form>
+
+  </div>
+</div>

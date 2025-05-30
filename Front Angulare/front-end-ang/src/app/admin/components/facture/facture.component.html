@@ -1,0 +1,65 @@
+<div *ngIf="data.commande" class="containt">
+  <div #invoiceContent id="invoiceContent">
+    <div class="invoice-header">
+      <div class="company-details">
+        <p class="text-3xl font-serif font-bold tracking-wide overline text-blue-400">F F S</p>
+        <p>7V5M+XF5, P8, Zarzouna</p>
+        <p>7000 Bizerte</p>
+      </div>
+      <h1 class="invoice-title">FACTURE</h1>
+    </div>
+    <div class="invoice-info">
+      <div class="bill-to">
+        <h2>Facturé à</h2>
+        <p><strong>Nom de client :</strong>  {{data.commande.userName}}</p>
+        <p><strong> Adresse de client :</strong> {{data.commande.adresse}}</p>
+        <p><strong> Paiment par :</strong> {{data.commande.paiment}}</p>
+
+      </div>
+      <div class="invoice-details">
+        <p><strong>Facture n°:</strong> {{data.commande.code_fact}}</p>
+        <p><strong>Date:</strong> {{data.commande.date | date:'dd/MM/yyyy'}}</p>
+        <p><strong>Date de livraison:</strong> {{data.commande.date_liv | date:'dd/MM/yyyy'}}</p>
+        <p><strong>Commande n°:</strong> {{data.commande.code}}</p>
+      </div>
+    </div>
+    <table class="invoice-table">
+      <thead>
+        <tr class="headertab">
+          <th>QTE</th>
+          <th>NOM PRODUIT</th>
+          <th>VOIX DE LIVRAISON</th>
+          <th>PRIX UNIT. HT</th>
+          <th>FRAIS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of data.commande.cartItems">
+          <td>{{item.qte}}</td>
+          <td>{{item.nomProduit}}</td>
+          <td>{{item.nomVoix}}</td>
+          <td>{{item.prixUnitaire | currency}}</td>
+          <td>{{item.frais1 + item.frais2 | currency}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="invoice-summary">
+      <p><strong>Total HT: </strong> {{data.commande.montant | currency}}</p>
+      <p><strong>TOTAL: </strong> {{data.commande.montant_totale | currency}}</p>
+    </div>
+    <div class="invoice-footer">
+      <p><strong>Conditions et modalités de paiement</strong></p>
+      <p>Le paiement est dû dans 15 jours</p>
+      <p>Caisse d'Epargne</p>
+      <p>IBAN: FR12 1234 5678</p>
+      <p>SWIFT/BIC: ABCDFRP1XXX</p>
+    </div>
+    <div class="invoice-signature">
+      <p>Directeur informatique : Borhen Dridi</p>
+    </div>
+  </div>
+  <div class="action">
+    <button mat-button (click)="printInvoice()">Imprimer</button>
+    <button mat-button (click)="closeDialog()">Fermer</button>
+  </div>
+</div>

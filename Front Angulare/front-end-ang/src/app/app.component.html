@@ -1,0 +1,22 @@
+<div class="py-5" *ngIf="!isAdminLoggedIn && !isClientLoggedIn">
+  <app-navbar></app-navbar>
+</div>
+<div class="py-5" *ngIf="isAdminLoggedIn">
+  <app-navbaradmin></app-navbaradmin>
+</div>
+<div class="py-5" *ngIf="isClientLoggedIn">
+  <app-navbarclient></app-navbarclient>
+</div>
+
+<div class="background"></div>
+<div class="content">
+  <router-outlet></router-outlet>
+
+  <app-main-carousel></app-main-carousel>
+</div>
+
+
+<div>
+  <app-footer></app-footer>
+</div>
+

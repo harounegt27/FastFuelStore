@@ -1,0 +1,62 @@
+.Bienvenue{
+  margin-top: 40px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  background-color: rgba(0, 0, 0, 0.493);
+  border-radius: 10px;
+  border-color: black;
+  border-width: 2px;
+}
+h5{
+  margin-left: 5px;
+  font-size: 40px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.parag{
+  font-size: 25px;
+  margin-right: 20px;
+  margin-left: 20px;
+  line-height: 2rem;
+  padding-bottom: 10px;
+}
+.parag{
+  animation-duration: 4s;
+  animation-name: slideinparag;
+}
+h5{
+  animation-duration: 6s;
+  animation-name: slideintit;
+}
+
+
+@keyframes slideinparag {
+  from {
+    margin-left: 100%;
+    width: 300%;
+    opacity: 0;
+  }
+  to {
+    margin-left: 20px;
+    width: 100%;
+    opacity: 100%;
+  }
+}
+@keyframes slideintit {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+.additional-content {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+.additional-content.show {
+  opacity: 1;
+}
+

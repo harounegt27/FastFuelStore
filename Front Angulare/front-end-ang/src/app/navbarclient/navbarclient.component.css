@@ -1,0 +1,17 @@
+.panier{
+  margin-left: 20px;
+  padding-top: 2px;
+}
+
+.nomClient{
+  padding-top: 5px;
+  padding-left: 30px;
+  font-size: larger;
+}
+
+mat-icon{
+  width: 29px;
+  height: 29px;
+  font-size: 29px;
+}
+

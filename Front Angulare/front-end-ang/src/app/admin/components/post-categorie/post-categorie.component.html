@@ -1,0 +1,38 @@
+<div class="min-h-screen flex items-center justify-center">
+  <div class="max-w-md w-full p-6 bg-white rounded-lg shadow-lg bg-cyan-100 border-cyan-800 border-2">
+
+    <div class="flex justify-center mb-8 ">
+      <a routerLink="/" class="text-2xl font-serif font-bold tracking-wide overline text-blue-800">F F S</a>
+    </div>
+
+    <h1 class="text-2xl font-semibold text-center text-cyan-500 mt-8 mb-6 ">Ajouter Catégorie</h1>
+
+    <form [formGroup]="categorieForm" >
+      <!-- Nom -->
+      <div class="mb-4">
+        <label class="block mb-2 text-sm text-gray-600">Nom</label>
+        <input matInput formControlName="name" placeholder="Nom" class="w-full px-4 py-2 border text-cyan-800 text-lg font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" required>
+
+        <mat-error *ngIf="categorieForm.get('name')?.invalid && categorieForm.get('name')?.touched">
+          Saisie un nom pour votre catégorie.
+        </mat-error>
+      </div>
+
+     <!-- descrition -->
+      <div class="mb-4">
+        <label class="block mb-2 text-sm text-gray-600">Description</label>
+        <textarea matInput formControlName="description" placeholder="Description" class="w-full px-4 py-2 border text-cyan-800 text-base rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" required></textarea>
+
+        <mat-error *ngIf="categorieForm.get('description')?.invalid && categorieForm.get('description')?.touched">
+          Saisie une description pour votre catégorie.
+        </mat-error>
+      </div>
+
+      <!-- Confirmation -->
+      <button type="submit" class="w-32 bg-gradient-to-r from-cyan-400 to-cyan-600 text-white py-2 rounded-lg mx-auto block focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 mb-2" (click)="addCategori()">Ajouter</button>
+
+
+    </form>
+
+  </div>
+</div>

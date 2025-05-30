@@ -1,0 +1,42 @@
+
+<div class="min-h-screen flex items-center justify-center">
+  <div class="max-w-md w-full p-6 bg-white rounded-lg shadow-lg">
+
+    <div class="flex justify-center mb-8">
+      <a routerLink="/" class="text-2xl font-serif font-bold tracking-wide overline text-blue-400">F F S</a>
+    </div>
+
+    <h1 class="text-2xl font-semibold text-center text-gray-500 mt-8 mb-6">Avis</h1>
+
+    <form [formGroup]="reviewForm">
+
+      <div>
+        <mat-label class="block mb-2 text-sm text-gray-600">Notation sur 5</mat-label>
+        <select formControlName="rating" class="custom-select">
+          <option value="1">1 étoile</option>
+          <option value="2">2 étoiles</option>
+          <option value="3">3 étoiles</option>
+          <option value="4">4 étoiles</option>
+          <option value="5">5 étoiles</option>
+        </select>
+        <mat-error *ngIf="reviewForm.get('rating').invalid && reviewForm.get('rating').touched">
+          Please select a rating!
+        </mat-error>
+      </div>
+
+      <!-- Description -->
+      <div class="mb-4">
+        <label class="block mb-2 text-sm text-gray-600">Description</label>
+        <textarea matInput formControlName="description" placeholder="Description" class="w-full px-4 py-2 border text-cyan-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" required></textarea>
+        <mat-error *ngIf="reviewForm.get('description')?.invalid && reviewForm.get('description')?.touched">
+          Saisie une description valide.
+        </mat-error>
+      </div>
+
+
+      <!-- Confirmation -->
+      <button type="submit" class="w-32 bg-gradient-to-r from-cyan-400 to-cyan-600 text-white py-2 rounded-lg mx-auto block focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 mb-2" (click)="submitForm()" [disabled]="reviewForm.invalid">Ajouter votre avis</button>
+
+    </form>
+  </div>
+</div>

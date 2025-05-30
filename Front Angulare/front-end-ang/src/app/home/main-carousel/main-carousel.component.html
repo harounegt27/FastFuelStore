@@ -1,0 +1,13 @@
+<div class="relative">
+
+  <div class="carousel-container overflow-x-hidden">
+    <div class="carousel" [style.transform]="'translateX(-' + (currentSlide * 100) + '%)'">
+
+      <ng-container *ngFor="let item of carouselData; let i=index">
+          <a [routerLink]="item.path" class="carousel-item">
+            <img [src]="item.image" class="rounded-lg border-2 outline-2" alt="carousel image">
+          </a>
+      </ng-container>
+    </div>
+  </div>
+</div>

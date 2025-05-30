@@ -1,0 +1,37 @@
+<form [formGroup]="searchProductForm" class="search-form" (submit)="submitForm()">
+  <fieldset>
+    <label class="block mb-2 text-lg text-white-600">Rechercher un produit</label>
+    <input matInput formControlName="title" class="search-input">
+    <button class="recherche">Chercher</button>
+  </fieldset>
+</form>
+<div class="product-list">
+
+    <mat-card class="product-card" *ngFor="let product of products">
+        <div class="product-image">
+          <img [src]="product.processedImg" alt="product-img">
+        </div>
+        <div class="product-detail">
+          <h2 class="product-name">{{product.name}}</h2>
+          <p class="product-desc">{{product.description}}</p>
+          <mat-divider></mat-divider>
+
+          <div class="info-row">
+              <span class="info-label">Catégorie :</span>
+              <span class="info-value">{{product.categoriName}}</span>
+          </div>
+          <div class="product-info" *ngFor="let prixUnitaire of prixUnitairesMap.get(product.id)">
+
+
+            <div >
+              <span>Prix unitaire pour le voix
+                <span *ngIf="prixUnitaire.voixId === 1">Terre : </span>
+                <span *ngIf="prixUnitaire.voixId === 2">Mer : </span>
+                <span *ngIf="prixUnitaire.voixId === 3">Pipe : </span>
+              </span>
+              <span class="info-value">{{prixUnitaire.price}} $</span>
+            </div>
+          </div>
+        </div>
+    </mat-card>
+</div>

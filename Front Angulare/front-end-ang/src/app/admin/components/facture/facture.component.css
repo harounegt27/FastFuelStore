@@ -1,0 +1,126 @@
+#invoiceContent {
+  font-family: Arial, sans-serif;
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #000000;
+  background-color: aliceblue;
+}
+
+.containt{
+  display: flex;
+}
+
+.invoice-header {
+  display: flex;
+
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.company-details {
+  text-align: left;
+  color: black;
+}
+
+.invoice-title {
+  margin-left: 200px;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: right;
+  color: black;
+  padding-bottom: 55px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.invoice-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  color: black
+}
+
+.invoice-info > div {
+  width: 30%;
+}
+
+.invoice-info h2 {
+  font-size: 18px;
+  font-weight: bold;
+  color: black
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+
+}
+
+.invoice-table th, .invoice-table td {
+  border: 1px solid #000000;
+  padding: 8px;
+  text-align: center;
+  color: black
+}
+
+.invoice-table th {
+  background-color: #222222;
+  color: aliceblue;
+}
+
+.invoice-summary {
+  text-align: right;
+  margin-bottom: 20px;
+  font-size: larger;
+  color: black
+}
+
+.invoice-summary p {
+  margin: 0;
+}
+
+.invoice-footer {
+  text-align: left;
+  font-size: 12px;
+  margin-bottom: 20px;
+  color: black
+}
+
+.invoice-signature {
+  text-align: right;
+  margin-right: 20px;
+  font-weight: bold;
+  color: black
+}
+
+button {
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+@media print {
+  /* Masquer tous les éléments sauf le contenu de la facture */
+  .action * {
+    visibility: hidden;
+  }
+  #invoiceContent, #invoiceContent * {
+    visibility: visible;
+  }
+  #invoiceContent {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; /* Ajuster la largeur pour l'impression */
+    margin: 0;    /* Enlever les marges pour l'impression */
+    padding: 0;   /* Enlever le padding pour l'impression */
+    border: none; /* Enlever la bordure pour l'impression */
+    background-color: white; /* Fond blanc pour l'impression */
+  }
+}
+
+.action{
+  padding-top: 10px;
+
+}

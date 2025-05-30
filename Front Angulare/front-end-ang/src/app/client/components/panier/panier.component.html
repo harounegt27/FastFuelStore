@@ -1,0 +1,45 @@
+<div *ngIf="cartItems.length > 0; else emptyCart ">
+  <div class="cart-container">
+    <div class="cart-item" *ngFor="let item of cartItems">
+      <div class="product-info">
+        <div class="product-img">
+          <img [src]="item.processedImg" alt="product-img" />
+        </div>
+        <div class="product-details">
+          <div class="item-row">
+            <div class="item-name" [ngClass]="{'highlight' : item.highlighted}">
+              Produit : {{ item.nomProduit}}
+            </div>
+            <div class="item-price"> Prix unitaire : {{item.prixUnitaire | currency}} | Frais 1 : {{item.frais1 | currency}} | Frais 2 : {{item.frais2 | currency}}</div>
+            <div class="item-voix">Voix de livraison : {{item.nomVoix}} </div>
+            <div class="quantity-control">
+              Quantité : <input type="number" class="quantity" [value]="item.qte" (change)="updateQuantity(item.produitId, $event)">
+            </div>
+
+          </div>
+        </div>
+        <div class="item-actions">
+              <button class="delete-button" (click)="Supprimer(item.produitId)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+      </div>
+    </div>
+    <div class="total-price">
+      Montant sans frais : {{commande.montant | currency}}
+    </div>
+    <div class="total-price">
+      Montant totale : {{commande.montant_totale | currency}}
+    </div>
+    <div class="Passer">
+      <button class="inline-block rounded bg-indigo-500 text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] hover:bg-indigo-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-indigo-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] active:bg-indigo-700 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0" (click)="passerCommande()">Passer la commande</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #emptyCart>
+  <div class="empty-cart">
+    <mat-icon class="icon">remove_shopping_cart</mat-icon>
+    <span>rien à voir ici !</span>
+  </div>
+</ng-template>

@@ -1,0 +1,30 @@
+<div class="container">
+  <mat-card>
+    <mat-card-title>Passer Commande</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="commandeForm">
+        <mat-form-field>
+          <mat-label>Adresse</mat-label>
+          <input matInput formControlName="adresse" placeholder="Adresse"  required>
+          <mat-error *ngIf="commandeForm.get('adresse')?.invalid && commandeForm.get('adresse')?.touched">
+            Saisie une adress pour votre commande.
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field >
+          <mat-label>Méthode de paiement</mat-label>
+          <mat-select formControlName="paiment" required>
+            <mat-option value="CHEQUE_BANCAIRE">Cheque Bancaire</mat-option>
+            <mat-option value="VIREMENT">Virement</mat-option>
+          </mat-select>
+          <mat-error *ngIf="commandeForm.get('methodePaiement')?.invalid && commandeForm.get('methodePaiement')?.touched">
+            Sélectionnez une méthode de paiement.
+          </mat-error>
+        </mat-form-field>
+        <div class="button-row">
+          <button class="valider" (click)="passerCommande()">Valider</button>
+          <button class="fermer" (click)="closeForm()">Fermer</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
